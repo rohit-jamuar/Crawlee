@@ -1,6 +1,10 @@
 ##Crawlee
 
 Simple Web Crawler
+  * Crawls over the list of URLs provided. 
+  * Fetches links from the DOM while crwaling, adds them to the list of URLs to be crawled. 
+  * The crawling process continues till the **maximum_number_links_to_crawl**. 
+  * The crawler also dumps crawled URLs' document to local disk.
 
 #### External Dependency:
   * [Jsoup](http://jsoup.org/download)
