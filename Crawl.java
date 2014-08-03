@@ -18,7 +18,7 @@ class Crawl
      * fileExists(String fPath) - Checks whether a file exists at the path provided.
      * Returns true, if it exists, else false. 
      * */
-	public static boolean fileExists(String fPath)
+    public static boolean fileExists(String fPath)
     {
         File f = new File(fPath);
         if(f.exists()) return true;
@@ -29,7 +29,7 @@ class Crawl
      * extractName(String urlName) - Normalises a URL
      * It extracts the host-name from URL, which is then used by code to make sure that URLs being crawled are different hosts.
      * */
-	public static String extractName(String urlName)
+    public static String extractName(String urlName)
     {
         String remove[] = {"http://", "https://", "ftp://"};
         for (String str : remove)
