@@ -2,7 +2,7 @@
 
 Simple Web Crawler
   * Crawls over the list of URLs provided (via **name_of_text_file**). 
-  * Fetches hyperlinks from DOM, adds them to the list of URLs to be crawled. 
+  * Fetches hyperlinks from DOM, adds them to the list of URLs to be crawled over. 
   * The crawling process continues till **maximum_number_links_to_crawl** is reached. 
   * The crawler also dumps crawled URLs' document (HTML) to local disk.
 
