@@ -104,7 +104,7 @@ class Crawl
     }
     
     /*
-     * fetchLinks (String inputURL) - Fetches all the links present on DOM of 'inputURL' URL 
+     * fetchLinks (String inputURL) - Fetches all the links present in document 'inputDoc'.
      * */
     public static ArrayList<String> fetchLinks (Document inputDoc)
     {
