@@ -1,5 +1,7 @@
 ##Crawlee
 
+Simple Web Crawler
+
 #### External Dependency:
   * [Jsoup](http://jsoup.org/download)
 
