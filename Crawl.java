@@ -139,7 +139,6 @@ class Crawl
                 while ((currentLine = br.readLine()) != null && url_ref.size() < maxURLsToBeStored)
                 {
                     currentLine = currentLine.replaceAll("\\s","");
-                    
                     url_queue.add(currentLine);
                     
                     while (url_queue.size() > 0 && url_ref.size() < maxURLsToBeStored)
