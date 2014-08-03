@@ -106,12 +106,10 @@ class Crawl
     /*
      * fetchLinks (String inputURL) - Fetches all the links present on DOM of 'inputURL' URL 
      * */
-    public static ArrayList<String> fetchLinks (String inputURL)
+    public static ArrayList<String> fetchLinks (Document inputDoc)
     {
         ArrayList<String> urlList = new ArrayList<String>();
-        
-        Document currentDocument = getDocument(inputURL);
-        Elements links = currentDocument.select("a[href]");
+        Elements links = inputDoc.select("a[href]");
         
         for(Element e: links)
             urlList.add(e.attr("abs:href"));
@@ -156,7 +154,7 @@ class Crawl
                             {
                             	url_ref.add(processedURL);
                                 
-                            	for (String link : fetchLinks(urlToBeProcessed))
+                            	for (String link : fetchLinks(currentURLDocument))
                                     url_queue.add(link);
                                 
                             	System.out.println("Processed " + urlToBeProcessed);
