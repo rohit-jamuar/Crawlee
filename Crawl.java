@@ -27,7 +27,8 @@ class Crawl
     
     /*
      * extractName(String urlName) - Normalises a URL
-     * It extracts the host-name from URL, which is then used by code to make sure that URLs being crawled are different hosts.
+     * It extracts the host-name from URL, which is then used by code to make sure that URLs (being crawled over)
+     have different hosts.
      * */
     public static String extractName(String urlName)
     {
