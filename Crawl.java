@@ -37,9 +37,8 @@ class Crawl
     	
     	for (String str : remove)
             urlName = urlName.replaceAll(str, "");
-        for (String c : splitCharacters)
-        	if (urlName.indexOf(c) != -1)
-        		urlName = urlName.split(c)[0];
+        for (String str : splitCharacters)
+        	urlName = urlName.split(str)[0];
         urlName = urlName.replaceAll("[^a-zA-Z0-9]", "_");
         return urlName;
     }
