@@ -35,10 +35,10 @@ class Crawl
     	String remove[] = {"http://", "https://", "ftp://"};
     	String splitCharacters[] = {"/", ":"};
     	
-    	for (String str : remove)
-        urlName = urlName.replaceAll(str, "");
+      for (String str : remove)
+          urlName = urlName.replaceAll(str, "");
       for (String str : splitCharacters)
-        urlName = urlName.split(str)[0];
+          urlName = urlName.split(str)[0];
       urlName = urlName.replaceAll("[^a-zA-Z0-9]", "_");
       return urlName;
     }
