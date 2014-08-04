@@ -31,7 +31,7 @@ class Crawl
      * */
     public static String extractName(String urlName)
     {
-        String remove[] = {"http://", "https://", "ftp://"};
+    	String remove[] = {"http://", "https://", "ftp://"};
         for (String str : remove)
             urlName = urlName.replaceAll(str, "");
         if (urlName.indexOf('/') != -1)
@@ -117,18 +117,19 @@ class Crawl
         return urlList;
     }
     
-    /*
-     * arg[0] -- file_name : contains a newline-separated list of URLs
-     * arg[1] -- maximum number of URLs to be processed by Crawler
-     * 
-     * */
-    public static void main(String args[])
+    
+    /**
+     * @param args
+     * args[0] -- name of file
+     * args[1] -- maximum number of URLs to be crawled
+     */
+    public static void main(final String args[])
     {
         if (args.length == 2 && fileExists(args[0]))
         {
             int maxURLsToBeStored = Integer.parseInt(args[1]);
-            HashSet<String> url_ref = new HashSet<String>();
-            Queue<String> url_queue = new LinkedList<String>();
+            HashSet<String> urlRef = new HashSet<String>();
+            Queue<String> urlQueue = new LinkedList<String>();
             
             BufferedReader br = null;                                
             try 
@@ -136,27 +137,29 @@ class Crawl
                 String currentLine;
                 br = new BufferedReader(new FileReader(args[0]));
                 
-                while ((currentLine = br.readLine()) != null && url_ref.size() < maxURLsToBeStored)
+                while ((currentLine = br.readLine()) != null && urlRef.size() < maxURLsToBeStored)
                 {
                     currentLine = currentLine.replaceAll("\\s","");
-                    url_queue.add(currentLine);
+                    urlQueue.add(currentLine);
                     
-                    while (url_queue.size() > 0 && url_ref.size() < maxURLsToBeStored)
+                    while (urlQueue.size() > 0 && urlRef.size() < maxURLsToBeStored)
                     {
-                        String urlToBeProcessed = url_queue.remove();
+                        String urlToBeProcessed = urlQueue.remove();
                         String processedURL = extractName(urlToBeProcessed); 
                         
-                        if (!url_ref.contains(processedURL))
+                        if (!urlRef.contains(processedURL))
                         {
                             Document currentURLDocument = getDocument(urlToBeProcessed);
                             if (currentURLDocument != null && htmlWriter(currentURLDocument, processedURL+".html"))
                             {
-                            	url_ref.add(processedURL);
+                            	urlRef.add(processedURL);
                                 
                             	for (String link : fetchLinks(currentURLDocument))
-                                    url_queue.add(link);
-                                
-                            	System.out.println("Processed " + urlToBeProcessed);
+                            	{
+                            		if (link.length() > 1)
+                            			urlQueue.add(link);
+                            	}
+                                System.out.println("Processed -- " + urlToBeProcessed);
                             }
                             else
                                 System.out.println("Error!");
