@@ -156,17 +156,13 @@ class Crawl
                             	urlRef.add(processedURL);
                                 
                             	for (String link : fetchLinks(currentURLDocument))
-                            	{
-                            		if (link.length() > 1)
-                            			urlQueue.add(link);
-                            	}
-                                System.out.println("Processed -- " + urlToBeProcessed);
+                            		if (link.length() > 1) urlQueue.add(link);
+                            	
+                            	System.out.println("Processed -- " + urlToBeProcessed);
                             }
-                            else
-                                System.out.println("Error!");
                         }
                     }
-                }
+                 }
             } 
             catch (IOException e) 
             {
