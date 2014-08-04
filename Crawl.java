@@ -33,10 +33,13 @@ class Crawl
     public static String extractName(String urlName)
     {
     	String remove[] = {"http://", "https://", "ftp://"};
-        for (String str : remove)
+    	String splitCharacters[] = {"/", ":"};
+    	
+    	for (String str : remove)
             urlName = urlName.replaceAll(str, "");
-        if (urlName.indexOf('/') != -1)
-            urlName =  urlName.split("/")[0];
+        for (String c : splitCharacters)
+        	if (urlName.indexOf(c) != -1)
+        		urlName = urlName.split(c)[0];
         urlName = urlName.replaceAll("[^a-zA-Z0-9]", "_");
         return urlName;
     }
@@ -91,7 +94,7 @@ class Crawl
      * */
     public static Document getDocument(String inputURL)
     {
-        try
+      	try
         {
             if (inputURL.length() > 1)
                 return Jsoup.connect(inputURL).get();
