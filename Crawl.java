@@ -36,11 +36,11 @@ class Crawl
     	String splitCharacters[] = {"/", ":"};
     	
     	for (String str : remove)
-            urlName = urlName.replaceAll(str, "");
-        for (String str : splitCharacters)
-        	urlName = urlName.split(str)[0];
-        urlName = urlName.replaceAll("[^a-zA-Z0-9]", "_");
-        return urlName;
+        urlName = urlName.replaceAll(str, "");
+      for (String str : splitCharacters)
+        urlName = urlName.split(str)[0];
+      urlName = urlName.replaceAll("[^a-zA-Z0-9]", "_");
+      return urlName;
     }
     
 	/*
